@@ -55,6 +55,28 @@ RSpec.describe Enumerable do
     end
   end
 
-  
+  describe '#my_count' do
+    it 'counts the number of elements in an array' do
+      expect([1, 3, 4].my_count).to eql(3)
+    end
+    it 'counts  the same value in an array given a condition' do
+      expect([1, 3, 4, 3].my_count(3)).to eql(2)
+    end
+    it 'counts the number of elements that passes a given condition in a block' do
+      expect([1, 3, 4, 3].my_count { |x| x > 1 }).to eql(3)
+    end
+
+    it 'counts the number of elements in an hash' do
+      expect({ a: 1, b: 3, c: 4 }.my_count).to eql(3)
+    end
+    it 'counts the pairs that have the same given value in a hash ' do
+      expect({ a: 1, b: 3, c: 4, d: 4 }.my_count(4)).to eql(2)
+    end
+    it 'counts  the key-value pairs  that passes a given condition in a block' do
+      expect({ a: 1, b: 3, c: 4, d: 4 }.my_count { |_key, value| value > 1 }).to eql(3)
+    end
+  end
+
+ 
   
 end
