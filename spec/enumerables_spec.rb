@@ -20,5 +20,14 @@ RSpec.describe Enumerable do
     end
   end
 
- 
+  describe '#my_select' do
+    it 'filters elements in an array' do
+      expect([1, 3, 4].my_select { |x| x > 2 }).to eql([3, 4])
+    end
+    it 'filters elements in an hash' do
+      expect({ a: 1, b: 3, c: 4 }.my_select { |_key, value| value > 2 }).to eql(b: 3, c: 4)
+    end
+  end
+
+  
 end
