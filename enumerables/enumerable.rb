@@ -22,6 +22,7 @@ module Enumerable
         yield(keys[i], values[i], i)
       end
     end
+    self
   end
 
   def my_select
@@ -101,7 +102,7 @@ module Enumerable
       if block_given?
         temp = my_select { |key, value| yield(key, value) }
       elsif !param.nil?
-        temp = my_select { |_key, value| value == param }
+        temp = my_select { |key, value| value == param }
       else
         return size
       end
@@ -145,3 +146,5 @@ end
 def multiply_els(arr)
   puts arr.my_inject(1) { |tot, n| tot * n }
 end
+
+ [1, 3, 4].my_each_with_index { | index| index }
