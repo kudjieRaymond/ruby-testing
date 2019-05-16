@@ -77,6 +77,25 @@ RSpec.describe Enumerable do
     end
   end
 
- 
+  describe '#my_map' do
+    it 'creates a new array with the results of calling a block on every element' do
+      expect([1, 3, 4].my_map { |x| x * 2 }).to eql([2, 6, 8])
+    end
+
+    it 'creates a new array with the results of calling a block on every element' do
+      myproc = proc { |x| x * 2 }
+      expect([1, 3, 4].my_map(&myproc)).to eql([2, 6, 8])
+    end
+
+    it 'creates a new hash with the results of calling a block on key-value pairs' do
+      expect({ a: 1, b: 3, c: 4 }.my_map { |_key, value| value * 2 }).to eql(a: 2, b: 6, c: 8)
+    end
+
+    it 'creates a new hash with the results of calling a block on every element' do
+      myproc = proc { |_key, value| value * 2 }
+      expect({ a: 1, b: 3, c: 4 }.my_map(&myproc)).to eql(a: 2, b: 6, c: 8)
+    end
+  end
+
   
 end
