@@ -46,7 +46,7 @@ RSpec.describe Enumerable do
       expect({ a: 1, b: 3, c: 4, d: 4 }.my_any? { |_key, value| value > 2 }).to eql(true)
     end
   end
-	describe '#my_none' do
+  describe '#my_none' do
     it 'returns true if no element in the array is true given a condition' do
       expect([1, 3, 4].my_none? { |x| x > 5 }).to eql(true)
     end
@@ -88,7 +88,7 @@ RSpec.describe Enumerable do
     end
 
     it 'creates a new hash with the results of calling a block on key-value pairs' do
-      expect({ a: 1, b: 3, c: 4 }.my_map { |_key, value| value * 2 }).to eql(a: 2, b: 6, c: 8)
+      expect({ a:1,b:3,c:4 }.my_map { |_key, value| value * 2 }).to eql(a:2,b:6,c:8)
     end
 
     it 'creates a new hash with the results of calling a block on every element' do
@@ -97,5 +97,13 @@ RSpec.describe Enumerable do
     end
   end
 
-  
+  describe '#my_inject' do
+    it 'executes a reducer block (that you provide) on each element of the array' do
+      expect([1, 3, 4].my_inject { |acc, x| acc + x }).to eql(8)
+    end
+
+    it 'executes a reducer block (that you provide) on each element of the hash' do
+      expect({ a: 1, b: 3, c: 4 }.my_inject { |acc, x| acc + x }).to eql(8)
+    end
+  end
 end
