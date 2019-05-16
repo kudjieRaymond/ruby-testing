@@ -38,5 +38,14 @@ RSpec.describe Enumerable do
     end
   end
 
+  describe '#my_any' do
+    it 'return true if any element is true given a condition' do
+      expect([1, 3, 4].my_any? { |x| x > 2 }).to eql(true)
+    end
+    it 'return true if  any key-value pair in the hash is true given a condition' do
+      expect({ a: 1, b: 3, c: 4, d: 4 }.my_any? { |_key, value| value > 2 }).to eql(true)
+    end
+  end
+
   
 end
