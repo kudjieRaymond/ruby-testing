@@ -11,5 +11,14 @@ RSpec.describe Enumerable do
     end
   end
 
+  describe '#my_each_with_index' do
+    it 'loops over an array eith' do
+      expect([1, 3, 4].my_each_with_index { |_item, index| index }).to eql([1, 3, 4])
+    end
+    it 'loops over a hash ' do
+      expect({ a: 1, b: 3, c: 4 }.my_each_with_index { |_key, _value, index| index }).to eql(a: 1, b: 3, c: 4)
+    end
+  end
+
  
 end
