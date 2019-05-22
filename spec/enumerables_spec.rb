@@ -1,21 +1,21 @@
 require './enumerables/enumerable.rb'
 
 RSpec.describe Enumerable do
-  describe '#each' do
-    it 'expects a block' do
+  describe '#my_each' do
+    it 'expects a block and returns original array' do
       expect([1, 3, 4].my_each { |i| i }).to eql([1, 3, 4])
     end
 
-    it 'expects a block' do
+    it 'expects a block and returns original hash' do
       expect({ a: 1, b: 3, c: 4 }.my_each { |key| key }).to eql(a: 1, b: 3, c: 4)
     end
   end
 
   describe '#my_each_with_index' do
-    it 'loops over an array eith' do
+    it 'loops over an array with an index' do
       expect([1, 3, 4].my_each_with_index { |_item, index| index }).to eql([1, 3, 4])
     end
-    it 'loops over a hash ' do
+    it 'loops over a hash  with an index' do
       expect({ a: 1, b: 3, c: 4 }.my_each_with_index { |_key, _value, index| index }).to eql(a: 1, b: 3, c: 4)
     end
   end
@@ -88,7 +88,7 @@ RSpec.describe Enumerable do
     end
 
     it 'creates a new hash with the results of calling a block on key-value pairs' do
-      expect({ a:1,b:3,c:4 }.my_map { |_key, value| value * 2 }).to eql(a:2,b:6,c:8)
+      expect({ a: 1, b: 3, c: 4 }.my_map { |_key, value| value * 2 }).to eql(a: 2, b: 6, c: 8)
     end
 
     it 'creates a new hash with the results of calling a block on every element' do

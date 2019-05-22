@@ -147,4 +147,3 @@ def multiply_els(arr)
   puts arr.my_inject(1) { |tot, n| tot * n }
 end
 
- [1, 3, 4].my_each_with_index { | index| index }
